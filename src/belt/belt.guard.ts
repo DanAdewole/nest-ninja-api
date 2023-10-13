@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class BeltGuard implements CanActivate {
   canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
-    return true;
-  }
+        context: ExecutionContext,
+    ): boolean | Promise<boolean> | Observable<boolean> {
+        return true;
+    }
 }
