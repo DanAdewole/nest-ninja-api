@@ -46,7 +46,7 @@ export class NinjasController {
 
   // PUT /ninjas/:id --> { ... }
   @Put(':id')
-  updateNinja(@Param('id') id: string, @Body() updateNinjaDto: UpdateNinjaDto) {
+  updateNinja(@Param('id') id: string, @Body(new ValidationPipe()) updateNinjaDto: UpdateNinjaDto) {
     return this.ninjasService.updateNinja(+id, updateNinjaDto);
   }
 
