@@ -18,7 +18,7 @@ import { NinjasService } from './ninjas.service';
 import { BeltGuard } from 'src/belt/belt.guard';
 
 @Controller('ninjas')
-@UseGuards(BeltGuard)
+@UseGuards(BeltGuard) // protect the endpoint
 export class NinjasController {
   constructor(private readonly ninjasService: NinjasService) {}
   // GET /ninjas?weapon=sword --> []
