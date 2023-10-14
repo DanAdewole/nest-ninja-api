@@ -17,7 +17,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate": "npm run migrate:generate && npm run migrate:run",
+    "migrate:generate": "npm run typeorm -- migration:generate dd/migrations/ninja",
+    "migrate:run": "npm run typeorm -- migration:run",
+    "migrate:create": "npm run typeorm -- migration:create dd/migrations/ninja",
+    "typeorm": "npm run build && npx typeorm -d dist/db/typeorm.config.js"
+
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -28,7 +34,7 @@
     "@nestjs/typeorm": "^10.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "mysql": "^2.18.1",
+    "dotenv": "^16.3.1",
     "mysql2": "^3.6.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
