@@ -6,27 +6,32 @@ import { AppService } from './app.service';
 import { NinjasModule } from './ninjas/ninjas.module';
 import { UsersModule } from './users/users.module';
 import { DataSource } from 'typeorm';
-import { UserswithdbModule } from './userswithdb/userswithdb.module';
+import { AppConfig, DatabaseConfig } from './config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      load: [AppConfig, DatabaseConfig],
+    }),
     NinjasModule,
     UsersModule,
     TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        type: 'mysql',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_NAME'),
-        entities: ['dist/**/*.entity.js'],
-        // synchronize: true,
+        ...configService.get('database'),
+        // type: 'mysql',
+        // host: configService.get<string>('DB_HOST'),
+        // port: configService.get<number>('DB_PORT'),
+        // username: configService.get<string>('DB_USERNAME'),
+        // password: configService.get<string>('DB_PASSWORD'),
+        // database: configService.get<string>('DB_NAME'),
+        // entities: ['dist/**/*.entity.js'],
+        // // synchronize: true,
       }),
     }),
-    UserswithdbModule,
   ],
   controllers: [AppController],
   providers: [AppService],
