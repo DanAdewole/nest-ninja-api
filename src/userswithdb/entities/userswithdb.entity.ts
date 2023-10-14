@@ -13,4 +13,6 @@ export class UserWithDb {
 
   @Column({ default: true })
   isActive: boolean;
+
+  // photos: Photo[];
 }

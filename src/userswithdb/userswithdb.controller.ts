@@ -8,27 +8,27 @@ export class UserswithdbController {
   constructor(private readonly userswithdbService: UserswithdbService) {}
 
   @Post()
-  create(@Body() createUserswithdbDto: CreateUserswithdbDto) {
-    return this.userswithdbService.create(createUserswithdbDto);
+  createUser(@Body() createUserswithdbDto: CreateUserswithdbDto) {
+    return this.userswithdbService.createUser(createUserswithdbDto);
   }
 
   @Get()
-  findAll() {
-    return this.userswithdbService.findAll();
+  getUsers() {
+    return this.userswithdbService.getUsers();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userswithdbService.findOne(+id);
+  getUser(@Param('id') id: string) {
+    return this.userswithdbService.getUser(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserswithdbDto: UpdateUserswithdbDto) {
-    return this.userswithdbService.update(+id, updateUserswithdbDto);
+  updateUser(@Param('id') id: string, @Body() updateUserswithdbDto: UpdateUserswithdbDto) {
+    return this.userswithdbService.updateUser(+id, updateUserswithdbDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userswithdbService.remove(+id);
+  removeUser(@Param('id') id: string) {
+    return this.userswithdbService.removeUser(+id);
   }
 }
