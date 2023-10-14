@@ -15,10 +15,10 @@ import {
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
 import { NinjasService } from './ninjas.service';
-import { BeltGuard } from 'src/belt/belt.guard';
+import { RolesGuard } from 'src/roles/roles.guard';
 
 @Controller('ninjas')
-@UseGuards(BeltGuard) // protect the endpoint
+@UseGuards(RolesGuard) // protect the endpoint
 export class NinjasController {
   constructor(private readonly ninjasService: NinjasService) {}
   // GET /ninjas?weapon=sword --> []
