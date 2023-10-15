@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+} from '@nestjs/common';
 import { UserswithdbService } from './userswithdb.service';
 import { CreateUserswithdbDto } from './dto/create-userswithdb.dto';
 import { UpdateUserswithdbDto } from './dto/update-userswithdb.dto';
@@ -18,17 +27,21 @@ export class UserswithdbController {
   }
 
   @Get(':id')
-  getUser(@Param('id') id: string) {
-    return this.userswithdbService.getUser(+id);
+  getUser(@Param('id') id: number) {
+    return this.userswithdbService.getUser(id);
   }
 
   @Patch(':id')
-  updateUser(@Param('id') id: string, @Body() updateUserswithdbDto: UpdateUserswithdbDto) {
-    return this.userswithdbService.updateUser(+id, updateUserswithdbDto);
+  updateUser(
+    @Param('id') id: number,
+    @Body() updateUserswithdbDto: UpdateUserswithdbDto,
+  ) {
+    return this.userswithdbService.updateUser(id, updateUserswithdbDto);
   }
 
   @Delete(':id')
-  removeUser(@Param('id') id: string) {
-    return this.userswithdbService.removeUser(+id);
+  @HttpCode(204)
+  removeUser(@Param('id') id: number) {
+    return this.userswithdbService.removeUser(id);
   }
 }
