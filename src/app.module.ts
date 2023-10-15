@@ -7,6 +7,7 @@ import { NinjasModule } from './ninjas/ninjas.module';
 import { UsersModule } from './users/users.module';
 import { DataSource } from 'typeorm';
 import { AppConfig, DatabaseConfig } from './config';
+import { UserswithdbModule } from './userswithdb/userswithdb.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AppConfig, DatabaseConfig } from './config';
       load: [AppConfig, DatabaseConfig],
     }),
     NinjasModule,
+    UserswithdbModule,
     UsersModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
