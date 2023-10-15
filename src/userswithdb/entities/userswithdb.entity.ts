@@ -14,5 +14,7 @@ export class UserWithDb {
   @Column({ default: true })
   isActive: boolean;
 
+  @Column()
+  password: string
   // photos: Photo[];
 }
