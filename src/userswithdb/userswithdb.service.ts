@@ -43,7 +43,7 @@ export class UserswithdbService {
   async updateUser(
     id: number,
     updateUserswithdbDto: UpdateUserswithdbDto,
-  ): Promise<UserWithDb> {
+  ): Promise<UserWithDb | null> {
     try {
       const updateUser = await this.userWithDbRepository.update(
         id,
