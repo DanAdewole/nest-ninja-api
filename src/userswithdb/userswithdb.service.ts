@@ -69,7 +69,5 @@ export class UserswithdbService {
     } catch (error) {
       throw new NotFoundException('User not found');
     }
-    
-    
   }
 }
